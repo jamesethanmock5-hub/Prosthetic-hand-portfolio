@@ -3,390 +3,536 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Prosthetic Hand: Design, Control, and Prototyping</title>
+  <title>James Mock | Prosthetic Hand Portfolio</title>
+  <meta
+    name="description"
+    content="Engineering project portfolio for a prosthetic hand and cycloidal drive system developed by James Mock."
+  />
   <style>
     :root {
-      --bg: #0b0f14;
-      --surface: #111821;
-      --surface-2: #16212d;
-      --text: #e8eef5;
-      --muted: #aab7c4;
-      --line: #263241;
-      --accent: #7fc8ff;
-      --accent-2: #9be7c4;
-      --max: 1080px;
-      --radius: 20px;
-      --shadow: 0 20px 50px rgba(0,0,0,.28);
+      --bg: #0f1115;
+      --bg-soft: #171a21;
+      --card: #1d212b;
+      --card-2: #242a36;
+      --text: #f2f4f8;
+      --muted: #c6ccd8;
+      --accent: #8fb8ff;
+      --line: #303849;
+      --maxw: 1180px;
+      --shadow: 0 10px 30px rgba(0,0,0,0.22);
+      --radius: 16px;
     }
 
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
+    * {
+      box-sizing: border-box;
       margin: 0;
-      font-family: Inter, Arial, Helvetica, sans-serif;
-      background: linear-gradient(180deg, #0b0f14 0%, #101720 100%);
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: linear-gradient(180deg, #0f1115 0%, #131720 100%);
       color: var(--text);
       line-height: 1.65;
     }
 
-    a { color: var(--accent); text-decoration: none; }
-    img { max-width: 100%; display: block; }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+      border-radius: 14px;
+    }
 
     .container {
-      width: min(calc(100% - 2rem), var(--max));
+      width: min(92%, var(--maxw));
       margin: 0 auto;
     }
 
-    .nav {
+    header {
       position: sticky;
       top: 0;
-      z-index: 50;
-      backdrop-filter: blur(14px);
-      background: rgba(11,15,20,.72);
-      border-bottom: 1px solid rgba(255,255,255,.06);
+      z-index: 1000;
+      background: rgba(15, 17, 21, 0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
     }
 
-    .nav-inner {
+    .nav {
+      min-height: 72px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 1rem 0;
-      gap: 1rem;
+      gap: 20px;
     }
 
     .brand {
+      font-size: 1.1rem;
       font-weight: 700;
-      letter-spacing: .02em;
-      font-size: .98rem;
+      letter-spacing: 0.3px;
     }
 
     .nav-links {
       display: flex;
-      gap: 1rem;
       flex-wrap: wrap;
-      justify-content: flex-end;
+      gap: 18px;
+      font-size: 0.98rem;
+      color: var(--muted);
     }
 
-    .nav-links a {
-      color: var(--muted);
-      font-size: .92rem;
+    .nav-links a:hover {
+      color: var(--text);
     }
 
     .hero {
-      padding: 4rem 0 2.5rem;
+      padding: 90px 0 60px;
     }
 
     .hero-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2rem;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 36px;
       align-items: center;
     }
 
     .eyebrow {
-      color: var(--accent-2);
-      text-transform: uppercase;
-      letter-spacing: .12em;
-      font-size: .78rem;
-      margin-bottom: .8rem;
+      display: inline-block;
+      color: var(--accent);
       font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 0.82rem;
+      margin-bottom: 14px;
     }
 
     h1 {
-      margin: 0 0 1rem;
-      font-size: clamp(2.2rem, 5vw, 4.3rem);
+      font-size: clamp(2.2rem, 4vw, 4rem);
       line-height: 1.08;
-      letter-spacing: -.03em;
+      margin-bottom: 16px;
     }
 
-    .lead {
+    .hero p {
       color: var(--muted);
-      font-size: 1.04rem;
-      max-width: 62ch;
-      margin-bottom: 1.6rem;
+      font-size: 1.05rem;
+      max-width: 760px;
+      margin-bottom: 24px;
     }
 
     .hero-meta {
       display: flex;
       flex-wrap: wrap;
-      gap: .75rem;
+      gap: 12px;
+      margin-top: 20px;
     }
 
-    .pill {
-      padding: .7rem 1rem;
+    .meta-chip {
+      background: var(--bg-soft);
       border: 1px solid var(--line);
       border-radius: 999px;
+      padding: 10px 14px;
       color: var(--muted);
-      background: rgba(255,255,255,.02);
-      font-size: .92rem;
+      font-size: 0.95rem;
+    }
+
+    .hero-card {
+      background: linear-gradient(180deg, var(--card) 0%, var(--card-2) 100%);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 18px;
+      box-shadow: var(--shadow);
+    }
+
+    .hero-card img {
+      border-radius: 14px;
+    }
+
+    .section {
+      padding: 72px 0;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      margin-bottom: 14px;
+    }
+
+    .section-intro {
+      color: var(--muted);
+      max-width: 900px;
+      margin-bottom: 28px;
+    }
+
+    .content-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 26px;
+      margin-top: 28px;
     }
 
     .card {
-      background: linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.015));
-      border: 1px solid rgba(255,255,255,.07);
+      background: linear-gradient(180deg, var(--card) 0%, #1a1f28 100%);
+      border: 1px solid var(--line);
       border-radius: var(--radius);
+      padding: 24px;
       box-shadow: var(--shadow);
-      overflow: hidden;
     }
 
-    .hero-image {
-      padding: 0.5rem;
+    .card h3 {
+      font-size: 1.25rem;
+      margin-bottom: 12px;
     }
 
-    .hero-image img {
-      width: 100%;
-      height: auto;
-      object-fit: contain;
-      aspect-ratio: auto;
-      max-height: 520px;
+    .card p {
+      color: var(--muted);
     }
 
-    section {
-      padding: 1.35rem 0 0;
-    }
-
-    .section-head {
-      margin: 0 0 1rem;
-      font-size: 1.5rem;
-      letter-spacing: -.02em;
-    }
-
-    .grid-2 {
+    .image-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.25rem;
+      gap: 24px;
+      margin-top: 28px;
     }
 
-    .section-card {
-      padding: 1.4rem;
-    }
-
-    .section-card p:last-child { margin-bottom: 0; }
-
-    ul.clean {
-      margin: .6rem 0 0;
-      padding-left: 1.1rem;
-    }
-
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1.25rem;
+    .image-grid.two-col {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
     figure {
-      margin: 0;
-      background: var(--surface);
-      border: 1px solid rgba(255,255,255,.07);
+      background: linear-gradient(180deg, var(--card) 0%, #1a1f28 100%);
+      border: 1px solid var(--line);
       border-radius: var(--radius);
-      overflow: hidden;
+      padding: 16px;
       box-shadow: var(--shadow);
     }
 
-    figure img {
-      width: 100%;
-      object-fit: cover;
-      background: #0d141c;
-    }
-
     figcaption {
-      padding: .9rem 1rem 1rem;
+      margin-top: 12px;
       color: var(--muted);
-      font-size: .93rem;
-      border-top: 1px solid rgba(255,255,255,.06);
+      font-size: 0.96rem;
     }
 
-    .full figure img {
-      max-height: 620px;
+    .list-card ul {
+      padding-left: 20px;
+      color: var(--muted);
     }
 
-    .skills {
+    .list-card li + li {
+      margin-top: 10px;
+    }
+
+    .split {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: .8rem;
-      margin-top: 1rem;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+      align-items: start;
     }
 
-    .skill {
-      padding: .9rem 1rem;
-      border-radius: 14px;
-      border: 1px solid var(--line);
-      background: var(--surface-2);
-      color: var(--text);
-      font-size: .95rem;
+    .feature-image {
+      margin-top: 28px;
     }
 
     .footer {
-      padding: 3rem 0 4rem;
+      padding: 30px 0 50px;
       color: var(--muted);
-      font-size: .92rem;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      text-align: center;
+      font-size: 0.95rem;
     }
 
-    @media (max-width: 900px) {
-      .hero-grid, .grid-2, .gallery, .skills {
+    @media (max-width: 980px) {
+      .hero-grid,
+      .content-grid,
+      .split,
+      .image-grid.two-col {
         grid-template-columns: 1fr;
       }
+
+      .nav {
+        padding: 14px 0;
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
       .hero {
-        padding-top: 2.5rem;
+        padding-top: 60px;
       }
     }
   </style>
 </head>
 <body>
-  <div class="nav">
-    <div class="container nav-inner">
+  <header>
+    <div class="container nav">
       <div class="brand">James Mock</div>
-      <div class="nav-links">
+      <nav class="nav-links">
         <a href="#summary">Summary</a>
         <a href="#mechanical">Mechanical</a>
-        <a href="#rotation">Cycloidal Drive</a>
+        <a href="#cycloidal">Cycloidal Drive</a>
         <a href="#control">Control</a>
         <a href="#skills">Skills</a>
-      </div>
-    </div>
-  </div>
-
-  <header class="hero">
-    <div class="container hero-grid">
-      <div>
-        <div class="eyebrow">Engineering Project Portfolio</div>
-        <h1>Prosthetic Hand: Design, Control, and Prototyping</h1>
-        <p class="lead">
-          A robotic/prosthetic hand system developed to explore electromechanical integration, embedded control,
-          mechanical packaging, and custom motion transmission through a cycloidal drive architecture.
-        </p>
-        <div class="hero-meta">
-          <div class="pill">Auburn University</div>
-          <div class="pill">Electrical Engineering</div>
-          <div class="pill">ESP32 · C/C++ · NEMA 17</div>
-          <div class="pill">CAD · 3D Printing · Prototyping</div>
-        </div>
-      </div>
-      <div class="card hero-image">
-        <img src="Full Assembly v20.png" alt="Full prosthetic hand assembly CAD view" />
-      </div>
+      </nav>
     </div>
   </header>
 
-  <main class="container">
-    <section id="summary">
-      <div class="grid-2">
-        <div class="card section-card">
-          <h2 class="section-head">Project Summary</h2>
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow">Engineering Project Portfolio</span>
+          <h1>Prosthetic Hand: Design, Control, and Prototyping</h1>
           <p>
-            This project documents the design and development of a robotic/prosthetic hand system created to explore
-            electromechanical system integration, embedded control, and iterative engineering design. The current work
-            focuses on the palm and forearm structural assembly as well as a custom cycloidal drive intended to provide
-            controlled rotational motion for the arm.
+            A robotic/prosthetic hand system developed to explore electromechanical integration,
+            embedded control, mechanical packaging, and custom motion transmission through a
+            cycloidal drive architecture.
           </p>
-          <p>
-            The project combines CAD modeling, mechanical packaging, motion system design, and prototype-oriented
-            engineering decisions into a single system intended to demonstrate both technical ability and practical
-            problem-solving.
-          </p>
+
+          <div class="hero-meta">
+            <div class="meta-chip">Auburn University</div>
+            <div class="meta-chip">Electrical Engineering</div>
+            <div class="meta-chip">ESP32 · C/C++ · NEMA 17</div>
+            <div class="meta-chip">CAD · 3D Printing · Prototyping</div>
+          </div>
         </div>
-        <div class="card section-card">
-          <h2 class="section-head">Design Goals</h2>
-          <ul class="clean">
-            <li>Create a functional robotic/prosthetic hand platform with a strong structural base</li>
-            <li>Develop a compact palm and forearm assembly that supports future integration of components</li>
-            <li>Design a rotational drive mechanism capable of controlled arm motion</li>
-            <li>Use CAD and rapid prototyping methods to support iterative design improvements</li>
-            <li>Build a project that demonstrates mechanical design, systems thinking, and engineering documentation</li>
+
+        <div class="hero-card">
+          <img src="Prosthetic-Assembly-FrontView.png" alt="Main prosthetic hand project render" />
+        </div>
+      </div>
+    </section>
+
+    <section id="summary" class="section">
+      <div class="container">
+        <h2 class="section-title">Project Summary</h2>
+        <p class="section-intro">
+          This project documents the design and development of a robotic/prosthetic hand system
+          created to explore electromechanical system integration, embedded control, and iterative
+          engineering design. The current work focuses on the palm and forearm structural assembly
+          as well as a custom cycloidal drive intended to provide controlled rotational motion for
+          the arm.
+        </p>
+        <p class="section-intro">
+          The project combines CAD modeling, mechanical packaging, motion system design, and
+          prototype-oriented engineering decisions into a single system intended to demonstrate
+          both technical ability and practical problem-solving.
+        </p>
+
+        <div class="card list-card">
+          <h3>Design Goals</h3>
+          <ul>
+            <li>Create a functional robotic/prosthetic hand platform with a strong structural base.</li>
+            <li>Develop a compact palm and forearm assembly that supports future integration of components.</li>
+            <li>Design a rotational drive mechanism capable of controlled arm motion.</li>
+            <li>Use CAD and rapid prototyping methods to support iterative design improvements.</li>
+            <li>Build a project that demonstrates mechanical design, systems thinking, and engineering documentation.</li>
           </ul>
         </div>
       </div>
     </section>
 
-    <section id="mechanical">
-      <h2 class="section-head">Mechanical Design</h2>
-      <div class="card section-card" style="margin-bottom:1.25rem;">
-        <p>
-          The palm and forearm assembly was designed as the main structural body of the system. The CAD model shows a
-          compact interface between the palm housing and forearm support structure, with mounting features included for
-          future component integration. The forearm section was designed with cutout features to reduce unnecessary
-          material while maintaining structural support and creating space for internal routing and mechanical packaging.
+    <section id="mechanical" class="section">
+      <div class="container">
+        <h2 class="section-title">Mechanical Design</h2>
+        <p class="section-intro">
+          The palm and forearm assembly was designed as the main structural body of the system.
+          The CAD model shows a compact interface between the palm housing and forearm support
+          structure, with mounting features included for future component integration. The forearm
+          section was designed with cutout features to reduce unnecessary material while
+          maintaining structural support and creating space for internal routing and mechanical
+          packaging.
         </p>
-        <p>
-          A key goal of this portion of the design was to create a rigid base that could support rotational motion and
-          future actuator placement without making the overall assembly unnecessarily bulky. The geometry was also
-          designed to keep the structure visually clean and practical for fabrication through 3D printing or other
-          prototyping methods.
+        <p class="section-intro">
+          A key goal of this portion of the design was to create a rigid base that could support
+          rotational motion and future actuator placement without making the overall assembly
+          unnecessarily bulky. The geometry was also designed to keep the structure visually clean
+          and practical for fabrication through 3D printing or other prototyping methods.
         </p>
-      </div>
-      <div class="gallery full">
-        <figure>
-          <img src="april 9 complete.png" alt="Mechanical design CAD view of the prosthetic hand assembly" />
-          <figcaption>CAD model of the palm and forearm assembly showing the structural layout and mounting features.</figcaption>
-        </figure>
-        <figure>
-          <img src="Complete Build April 9.png" alt="Mechanical design CAD view of the prosthetic hand from another angle" />
-          <figcaption>Additional CAD view of the prosthetic hand assembly highlighting the structure, finger layout, and overall mechanical packaging.</figcaption>
-        </figure>
+
+        <div class="image-grid two-col">
+          <figure>
+            <img src="Prosthetic- PalmForearm-Skeleton.png" alt="CAD model of palm and forearm assembly" />
+            <figcaption>
+              CAD model of the palm and forearm assembly showing the structural layout and mounting features.
+            </figcaption>
+          </figure>
+
+          <figure>
+            <img src="Complete Build April 9.png" alt="Additional CAD view of prosthetic hand assembly" />
+            <figcaption>
+              Additional CAD view of the prosthetic hand assembly highlighting the structure, finger layout, and overall mechanical packaging.
+            </figcaption>
+          </figure>
+        </div>
       </div>
     </section>
 
-    <section id="rotation">
-      <h2 class="section-head">Rotational Motion System</h2>
-      <div class="card section-card" style="margin-bottom:1.25rem;">
-        <p>
-          A 20:1 gear ratio cycloidal drive was designed to provide rotational motion for the arm system. This mechanism
-          was selected because it offers a compact way to achieve high reduction in a relatively small package while
-          maintaining good torque capability and controlled output motion. The exploded CAD view shows the individual
-          components of the drive and highlights how the internal geometry contributes to the final transmission behavior.
+    <section id="cycloidal" class="section">
+      <div class="container">
+        <h2 class="section-title">Cycloidal Drive</h2>
+        <p class="section-intro">
+          A custom 20:1 cycloidal drive was designed as the primary rotational transmission concept
+          for this project. The mechanism was originally developed for the prosthetic arm system as
+          a compact method of converting motor-driven rotary input into slower, higher-torque
+          motion suitable for controlled joint actuation. As the design progressed, the drive also
+          became a strong standalone mechanical subsystem with potential reuse in future robotic
+          applications, including a modular 5-axis robot arm platform.
         </p>
-        <p>
-          Including a custom cycloidal drive in the design demonstrates a deeper level of mechanical design beyond basic
-          structural modeling. It reflects an effort to integrate motion transmission directly into the system architecture
-          rather than relying only on off-the-shelf solutions.
+        <p class="section-intro">
+          The cycloidal drive was modeled in Fusion 360 and developed with a focus on compact
+          packaging, reduction capability, modular construction, and compatibility with prototype
+          manufacturing through 3D printing. The design uses a 20:1 reduction ratio to amplify
+          torque while keeping the mechanism relatively small and mechanically integrated.
         </p>
-      </div>
-      <div class="gallery">
-        <figure>
-          <img src="Cycloidal Drive.png" alt="Exploded CAD view of the cycloidal drive" />
-          <figcaption>Exploded CAD view of the cycloidal drive designed to provide rotational motion within the arm system.</figcaption>
-        </figure>
-        <figure>
-          <img src="IMG_9258.jpeg" alt="Physical cycloidal drive prototype and control setup" />
-          <figcaption>Physical prototype of the cycloidal drive and control setup used to evaluate rotational motion and early hardware integration.</figcaption>
-        </figure>
-      </div>
-    </section>
 
-    <section id="control">
-      <div class="grid-2">
-        <div class="card section-card">
-          <h2 class="section-head">Control and Prototyping Direction</h2>
+        <div class="image-grid two-col">
+          <figure>
+            <img src="cycloidal-cover.png" alt="Full external render of the cycloidal drive assembly" />
+            <figcaption>
+              Full assembled CAD view of the cycloidal drive showing the compact external packaging and output interface.
+            </figcaption>
+          </figure>
+
+          <figure>
+            <img src="cycloidal-exploded.png" alt="Exploded internal assembly view of the cycloidal drive" />
+            <figcaption>
+              Exploded CAD view showing the layered construction of the cycloidal drive, including the cycloidal disks, bearings, shafting, and support structure.
+            </figcaption>
+          </figure>
+        </div>
+
+        <div class="content-grid">
+          <div class="card">
+            <h3>Design Purpose</h3>
+            <p>
+              This transmission was designed to serve as a compact torque conversion mechanism for
+              robotic joint movement. The intent was to move beyond simple structural CAD modeling
+              and incorporate a functional motion subsystem directly into the overall project
+              architecture. Including a custom cycloidal drive demonstrates deeper mechanical
+              design work through transmission design, component interaction, tolerancing,
+              packaging, and mechanical reuse across multiple project directions.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>Mechanical Layout and Function</h3>
+            <p>
+              The drive uses cycloidal motion principles to achieve high reduction in a relatively
+              compact form. The internal arrangement includes the cycloidal disks, eccentric input
+              motion, bearing support features, and an output interface designed to transfer the
+              reduced motion to the next stage of the mechanical system. This architecture was
+              chosen because it offers a strong balance between size, reduction ratio, and
+              mechanical interest for prototyping and portfolio development.
+            </p>
+          </div>
+        </div>
+
+        <div class="image-grid two-col">
+          <figure>
+            <img src="cycloidal-section-perspective.png" alt="Perspective section view of the cycloidal drive" />
+            <figcaption>
+              Sectioned perspective view used to study internal packaging, load paths, bearing support, and component fit.
+            </figcaption>
+          </figure>
+
+          <figure>
+            <img src="cycloidal-section-side.png" alt="Side section view of the cycloidal drive" />
+            <figcaption>
+              Orthographic section view highlighting the relationship between internal layers, support components, and the output structure.
+            </figcaption>
+          </figure>
+        </div>
+
+        <figure class="feature-image">
+          <img src="cycloidal-insideCasing.png" alt="Cycloidal drive internal view inside casing" />
+          <figcaption>
+            Internal casing view showing the mechanism packaged within the surrounding housing.
+          </figcaption>
+        </figure>
+
+        <div class="split">
+          <div class="card list-card">
+            <h3>Engineering Considerations</h3>
+            <ul>
+              <li>20:1 reduction ratio selected to provide meaningful speed reduction and torque amplification.</li>
+              <li>Designed around compact packaging for robotic joint integration.</li>
+              <li>Modeled for manufacturability through 3D printing and standard hardware integration.</li>
+              <li>Developed with attention to bearing placement, shaft support, and component stack-up.</li>
+              <li>Intended to support future motion system testing and robotic reuse.</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h3>Performance Direction</h3>
+            <p>
+              The cycloidal drive was intended to be driven by a NEMA 17 stepper motor as the
+              input actuator. Based on a 20:1 reduction ratio and an estimated transmission
+              efficiency of 35 percent, the design targets substantially increased output torque
+              relative to direct motor drive. Using a NEMA 17 stepper motor with a holding torque
+              of 45 N·cm (0.45 N·m), the estimated output torque is approximately 3.15 N·m under
+              the assumed efficiency condition.
+            </p>
+          </div>
+        </div>
+
+        <div class="card feature-image">
+          <h3>Project Value</h3>
           <p>
-            The next stage of the project will focus on improving the realism, compactness, and mechanical performance
-            of the prosthetic hand system. One major planned addition is a vertical wrist joint that will allow the hand
-            to move up and down in a way that more closely resembles natural wrist motion. This joint is intended to be
-            driven by a high-torque servo so that the wrist can provide controlled angular motion while still supporting
-            the weight and loading of the hand assembly.
-          </p>
-          <p>
-            Another planned improvement is the design of a forearm cover that can be 3D printed and integrated into the
-            current structure. In addition to improving the overall appearance of the system, this cover will help package
-            the components more cleanly and support the goal of slimming down the forearm from the original design.
-          </p>
-          <p>
-            The long-term control direction is expected to move beyond cable-driven finger actuation using servos and
-            toward linear actuators combined with mechanical linkages. This change is intended to improve grip strength,
-            provide more precise finger positioning, and create a more robust approach for controlled grasping.
+            This part of the project reflects mechanical design beyond basic part modeling by
+            showing how a custom transmission can be integrated into a larger electromechanical
+            system. It demonstrates CAD development, iterative engineering, internal mechanism
+            packaging, and the ability to build reusable subsystems that can transition from one
+            application to another. While the drive was first developed for a prosthetic arm
+            concept, it now also supports the direction of a future modular 5-axis robot arm
+            project.
           </p>
         </div>
-        <div class="card section-card">
-          <h2 class="section-head">Testing and Iteration Strategy</h2>
-          <p>
-            This project has evolved through iterative CAD development, physical prototyping, and hardware experimentation
-            rather than being treated as a single fixed design. The current work has focused on developing the palm and
-            forearm structure, evaluating motion concepts such as the cycloidal drive, and creating a foundation for future
+
+        <figure class="feature-image">
+          <img src="cycloidal-alt-cover.png" alt="Alternate external render of cycloidal drive" />
+          <figcaption>
+            Alternate external render used for presentation, documentation, and portfolio layout development.
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section id="control" class="section">
+      <div class="container">
+        <h2 class="section-title">Control and Prototyping Direction</h2>
+        <p class="section-intro">
+          The next stage of the project will focus on improving the realism, compactness, and
+          mechanical performance of the prosthetic hand system. One major planned addition is a
+          vertical wrist joint that will allow the hand to move up and down in a way that more
+          closely resembles natural wrist motion. This joint is intended to be driven by a
+          high-torque servo so that the wrist can provide controlled angular motion while still
+          supporting the weight and loading of the hand assembly.
+        </p>
+        <p class="section-intro">
+          Another planned improvement is the design of a forearm cover that can be 3D printed and
+          integrated into the current structure. In addition to improving the overall appearance
+          of the system, this cover will help package the components more cleanly and support the
+          goal of slimming down the forearm from the original design.
+        </p>
+        <p class="section-intro">
+          The long-term control direction is expected to move beyond cable-driven finger actuation
+          using servos and toward linear actuators combined with mechanical linkages. This change
+          is intended to improve grip strength, provide more precise finger positioning, and create
+          a more robust approach for controlled grasping.
+        </p>
+
+        <div class="card list-card">
+          <h3>Testing and Iteration Strategy</h3>
+          <p style="margin-bottom: 14px;">
+            This project has evolved through iterative CAD development, physical prototyping, and
+            hardware experimentation rather than being treated as a single fixed design. The
+            current work has focused on developing the palm and forearm structure, evaluating
+            motion concepts such as the cycloidal drive, and creating a foundation for future
             improvements in wrist motion, finger actuation, and overall system packaging.
           </p>
-          <p>
-            Each revision has helped identify practical mechanical limitations and has guided the next stage of design refinement.
-          </p>
-          <ul class="clean">
+          <ul>
             <li>Fit and alignment of structural components</li>
             <li>Smoothness of rotational motion</li>
             <li>Assembly tolerances for the cycloidal drive</li>
@@ -396,61 +542,64 @@
       </div>
     </section>
 
-    <section id="skills">
-      <div class="grid-2">
-        <div class="card section-card">
-          <h2 class="section-head">Skills Demonstrated</h2>
-          <p>
-            This project demonstrates skills in CAD modeling, mechanical system design, packaging of structural components,
-            motion mechanism development, and iterative design refinement. It also reflects the ability to think through
-            how individual subsystems fit together in a larger robotic/prosthetic assembly.
-          </p>
-          <p>
-            In addition to the mechanical design work, this project has strengthened experience with the ESP32 microcontroller
-            through programming in C/C++ to support system control and hardware testing. It has also required the development
-            of wiring diagrams and circuit planning to build working electrical setups for the prototype.
-          </p>
-          <p>
-            Another major part of the project has been building a complete working system from scratch to drive a NEMA 17
-            stepper motor as the actuator for the cycloidal drive. This work has involved hardware integration, motor control,
-            circuit implementation, and the coordination of mechanical and electrical subsystems into a functioning prototype platform.
-          </p>
-        </div>
-        <div class="card section-card">
-          <h2 class="section-head">Core Tools and Methods</h2>
-          <div class="skills">
-            <div class="skill">Fusion 360 / CAD Modeling</div>
-            <div class="skill">3D Printing and Prototype Fabrication</div>
-            <div class="skill">ESP32 Microcontroller</div>
-            <div class="skill">C/C++ Embedded Programming</div>
-            <div class="skill">NEMA 17 Stepper Integration</div>
-            <div class="skill">Circuit Planning and Wiring Diagrams</div>
-            <div class="skill">Mechanical Packaging</div>
-            <div class="skill">Iterative Engineering Development</div>
-          </div>
-        </div>
-      </div>
-    </section>
+    <section id="skills" class="section">
+      <div class="container">
+        <h2 class="section-title">Skills Demonstrated</h2>
+        <p class="section-intro">
+          This project demonstrates skills in CAD modeling, mechanical system design, packaging of
+          structural components, motion mechanism development, and iterative design refinement. It
+          also reflects the ability to think through how individual subsystems fit together in a
+          larger robotic/prosthetic assembly.
+        </p>
+        <p class="section-intro">
+          In addition to the mechanical design work, this project has strengthened experience with
+          the ESP32 microcontroller through programming in C/C++ to support system control and
+          hardware testing. It has also required the development of wiring diagrams and circuit
+          planning to build working electrical setups for the prototype.
+        </p>
+        <p class="section-intro">
+          Another major part of the project has been building a complete working system from
+          scratch to drive a NEMA 17 stepper motor as the actuator for the cycloidal drive. This
+          work has involved hardware integration, motor control, circuit implementation, and the
+          coordination of mechanical and electrical subsystems into a functioning prototype
+          platform.
+        </p>
 
-    <section>
-      <div class="grid-2">
-        <div class="card section-card">
-          <h2 class="section-head">Future Improvements</h2>
-          <p>
-            Future improvements to the project will focus on making the prosthetic hand more realistic in motion, more
-            compact in overall form, and more capable in controlled grasping. This includes the addition of a vertical wrist
-            joint, a slimmer 3D-printed forearm cover, and a longer-term transition from cable-driven finger control to
-            linear actuators combined with mechanical linkages.
-          </p>
-        </div>
-        <div class="card section-card">
-          <h2 class="section-head">Conclusion</h2>
-          <p>
-            This project represents an ongoing effort to design a robotic/prosthetic hand system that combines structural
-            design, controllable motion, and prototype-ready engineering decisions. The current work shows progress in both
-            the overall arm architecture and the custom rotational drive concept, and it provides a strong foundation for
-            future development in control, electronics integration, and physical prototyping.
-          </p>
+        <div class="content-grid">
+          <div class="card list-card">
+            <h3>Core Tools and Methods</h3>
+            <ul>
+              <li>Fusion 360 / CAD Modeling</li>
+              <li>3D Printing and Prototype Fabrication</li>
+              <li>ESP32 Microcontroller</li>
+              <li>C/C++ Embedded Programming</li>
+              <li>NEMA 17 Stepper Integration</li>
+              <li>Circuit Planning and Wiring Diagrams</li>
+              <li>Mechanical Packaging</li>
+              <li>Iterative Engineering Development</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h3>Future Improvements</h3>
+            <p>
+              Future improvements to the project will focus on making the prosthetic hand more
+              realistic in motion, more compact in overall form, and more capable in controlled
+              grasping. This includes the addition of a vertical wrist joint, a slimmer
+              3D-printed forearm cover, and a longer-term transition from cable-driven finger
+              control to linear actuators combined with mechanical linkages.
+            </p>
+            <br />
+            <h3>Conclusion</h3>
+            <p>
+              This project represents an ongoing effort to design a robotic/prosthetic hand system
+              that combines structural design, controllable motion, and prototype-ready
+              engineering decisions. The current work shows progress in both the overall arm
+              architecture and the custom rotational drive concept, and it provides a strong
+              foundation for future development in control, electronics integration, and physical
+              prototyping.
+            </p>
+          </div>
         </div>
       </div>
     </section>
